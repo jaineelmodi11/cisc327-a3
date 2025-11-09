@@ -132,4 +132,35 @@ webbrowser.open((pathlib.Path("htmlcov/index.html")).resolve().as_uri())
 PY
 ```
 
+## Inline Screenshots
 
+<details>
+<summary><b>All tests passing (pytest -q)</b></summary>
+
+![All tests passing](/screenshots/03-pytest-all-tests-passing.png)
+</details>
+
+<details>
+<summary><b>Final coverage (terminal)</b></summary>
+
+![Final coverage (terminal)](/screenshots/02-final-coverage-terminal.png)
+</details>
+
+<details>
+<summary><b>Final coverage (HTML index)</b></summary>
+
+![Final coverage (HTML)](/screenshots/05-coverage-html-index-final.png)
+</details>
+
+<!-- Optional improvement path -->
+<details>
+<summary><b>Initial coverage (terminal)</b> — optional</summary>
+
+![Initial coverage (terminal)](/screenshots/01-initial-coverage-terminal.png)
+</details>
+
+<details>
+<summary><b>Initial coverage (HTML index)</b> — optional</summary>
+
+![Initial coverage (HTML)](/screenshots/04-coverage-html-index-initial.png)
+</details>
