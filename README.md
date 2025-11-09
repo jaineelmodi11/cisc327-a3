@@ -6,6 +6,10 @@
 ## Quick start
 
 ```bash
+# from repo root
+python3 -m venv .venv
+source .venv/bin/activate
+
 python -m pip install -r requirements.txt
 
 # run tests
@@ -60,4 +64,72 @@ PY
 **Mocks (via `Mock(spec=PaymentGateway)`)**  
 - `PaymentGateway.process_payment`  
 - `PaymentGateway.refund_payment`
+
+
+## Coverage
+
+- **Initial (before seam exclusions):** ~95.7% statements (services), 100% branches  
+- **Final:** 100% statements & 100% branches on `services/`
+
+Seam placeholders that intentionally `raise NotImplementedError` are excluded via `# pragma: no cover` and an `exclude_lines` rule in `.coveragerc`. This avoids executing non-behavioral seams just to inflate coverage numbers.
+
+---
+
+## Screenshots (in `/screenshots`)
+
+**Required in report**
+- `03-pytest-all-tests-passing.png` — All tests passing (`pytest -q`)
+- `02-final-coverage-terminal.png` — Final coverage table (100%)
+- `05-coverage-html-index-final.png` — Final HTML coverage index (100%)
+
+**Optional (improvement path)**
+- `01-initial-coverage-terminal.png` — Initial coverage (~95.7%)
+- `04-coverage-html-index-initial.png` — Initial HTML coverage index (~95.7%)
+
+---
+
+## Project Structure
+
+```text
+.
+├── services/
+│   ├── __init__.py
+│   ├── library_service.py
+│   └── payment_service.py     # treated as external; do not modify
+├── tests/
+│   └── test_payment_mock_stub.py
+├── conftest.py                # ensures 'services' importable in pytest
+├── requirements.txt
+├── pytest.ini
+├── .coveragerc
+└── README.md
+
+```
+
+## Notes & Guardrails
+
+- Business logic is isolated: **stub** data seams; **mock** the external gateway and verify with `assert_called_once_with(...)` / `assert_not_called()`.
+- Use `Mock(spec=PaymentGateway)` so attribute/method typos are caught early.
+- Treat `services/payment_service.py` as external; **do not modify it**.
+- Do not execute seam placeholders that raise `NotImplementedError` just to inflate coverage; exclude them instead (see `.coveragerc` with `# pragma: no cover` + `exclude_lines`).
+
+---
+
+## How to Regenerate the Screenshots
+
+```bash
+# tests passing (terminal)
+pytest -q
+
+# final coverage (terminal + HTML)
+coverage run --branch -m pytest -q tests/
+coverage report -m
+coverage html
+# open the HTML index and click into services/library_service.py
+python - <<'PY'
+import webbrowser, pathlib
+webbrowser.open((pathlib.Path("htmlcov/index.html")).resolve().as_uri())
+PY
+```
+
 
