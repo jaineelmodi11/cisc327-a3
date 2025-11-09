@@ -20,3 +20,4 @@ coverage html
 python - <<'PY'
 import webbrowser, pathlib; webbrowser.open((pathlib.Path("htmlcov/index.html")).resolve().as_uri())
 PY
+```
