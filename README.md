@@ -154,7 +154,7 @@ PY
 
 <!-- Optional improvement path -->
 <details>
-<summary><b>Initial coverage (terminal)</b> — optional</summary>
+<summary><b>Initial coverage (terminal)</b></summary>
 
 ![Initial coverage (terminal)](/screenshots/01-initial-coverage-terminal.png)
 </details>
