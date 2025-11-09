@@ -149,7 +149,7 @@ PY
 <details>
 <summary><b>Final coverage (HTML index)</b></summary>
 
-![Final coverage (HTML)](/screenshots/05-coverage-html-index-final.png)
+![Final coverage (HTML)](/screenshots/04-html-coverage-final-index.png)
 </details>
 
 <!-- Optional improvement path -->
@@ -159,8 +159,4 @@ PY
 ![Initial coverage (terminal)](/screenshots/01-initial-coverage-terminal.png)
 </details>
 
-<details>
-<summary><b>Initial coverage (HTML index)</b> — optional</summary>
 
-![Initial coverage (HTML)](/screenshots/04-coverage-html-index-initial.png)
-</details>
